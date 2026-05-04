@@ -1,0 +1,22 @@
+# Local AI context (not for public repo)
+CLAUDE.md
+
+# Composer dev tooling (WordPress stubs etc.)
+vendor/
+
+# Editor / IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*.sublime-project
+*.sublime-workspace
+
+# OS cruft
+.DS_Store
+Thumbs.db
+
+# Logs and runtime caches
+*.log
+.phpunit.result.cache
+.phpcs-cache
