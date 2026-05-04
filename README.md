@@ -103,11 +103,3 @@ The Spanish CPT is structured to be removable cleanly:
    templates from the theme.
 
 The English side (`school_fees`) is unaffected.
-
-## License
-
-GPL v2 — see [LICENSE](LICENSE). Matches WordPress's licensing model.
-
-## Author
-
-Josh Espinoza — Provo City School District Technology
