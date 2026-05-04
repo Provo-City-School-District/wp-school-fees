@@ -9,7 +9,7 @@ year is *data*, not a separate post type.
 The legacy pattern required duplicating a plugin, ~7 theme template files, and ~40
 WordPress Pages every school year. Updating a single fee description meant editing it
 in five separate posts (one per active year), and again in Spanish. Adding a new year
-took hours of copy-paste.
+took hours of copy-paste and things would still get missed.
 
 This plugin replaces that with:
 
