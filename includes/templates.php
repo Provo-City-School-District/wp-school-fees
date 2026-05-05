@@ -18,19 +18,41 @@ function pcsd_school_fees_register_page_templates($templates)
 
 function pcsd_school_fees_template_include($template)
 {
-	// Page templates assigned via _wp_page_template postmeta.
 	if (is_page()) {
-		$slug = get_post_meta(get_queried_object_id(), '_wp_page_template', true);
+		$post     = get_queried_object();
+		$assigned = get_post_meta($post->ID, '_wp_page_template', true);
+
+		// Explicit template assignment (pages created/updated via the dropdown).
 		$page_templates = [
 			'template-school-fee-menu.php',
 			'template-school-fees-by-location.php',
 			'template-pagos-escolares-menu.php',
 			'template-pagos-escolares-by-location.php',
 		];
-		if (in_array($slug, $page_templates, true)) {
-			$file = PCSD_SCHOOL_FEES_DIR . 'templates/' . $slug;
+		if (in_array($assigned, $page_templates, true)) {
+			$file = PCSD_SCHOOL_FEES_DIR . 'templates/' . $assigned;
 			if (file_exists($file)) {
 				return $file;
+			}
+		}
+
+		// Slug-based fallback for legacy pages that never had a template assigned.
+		$post_slug = $post->post_name;
+		if (preg_match('/^school-fees-\d{2}-\d{2}$/', $post_slug)) {
+			return PCSD_SCHOOL_FEES_DIR . 'templates/template-school-fee-menu.php';
+		}
+		if (preg_match('/^pagos-escolares-\d{2}-\d{2}$/', $post_slug)) {
+			return PCSD_SCHOOL_FEES_DIR . 'templates/template-pagos-escolares-menu.php';
+		}
+
+		// Child of a year menu page → by-location template.
+		if ($post->post_parent) {
+			$parent_slug = get_post_field('post_name', $post->post_parent);
+			if (preg_match('/^school-fees-\d{2}-\d{2}$/', $parent_slug)) {
+				return PCSD_SCHOOL_FEES_DIR . 'templates/template-school-fees-by-location.php';
+			}
+			if (preg_match('/^pagos-escolares-\d{2}-\d{2}$/', $parent_slug)) {
+				return PCSD_SCHOOL_FEES_DIR . 'templates/template-pagos-escolares-by-location.php';
 			}
 		}
 	}
