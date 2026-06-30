@@ -238,6 +238,31 @@ function pcsd_school_fees_register_acf_fields()
 				'library' => 'all',
 				'mime_types' => 'pdf',
 			],
+			[
+				'key' => 'field_pcsd_additional_documents',
+				'label' => 'Additional Links',
+				'name' => 'additional_documents',
+				'type' => 'repeater',
+				'instructions' => 'Extra links to list alongside the fee summary (label + URL). Each row renders as a link below the fee summary PDF.',
+				'layout' => 'table',
+				'button_label' => 'Add Document',
+				'sub_fields' => [
+					[
+						'key' => 'field_pcsd_additional_document_label',
+						'label' => 'Label',
+						'name' => 'label',
+						'type' => 'text',
+						'required' => 1,
+					],
+					[
+						'key' => 'field_pcsd_additional_document_url',
+						'label' => 'URL',
+						'name' => 'url',
+						'type' => 'url',
+						'required' => 1,
+					],
+				],
+			],
 		],
 		'location' => [
 			[['param' => 'page_template', 'operator' => '==', 'value' => 'template-school-fees-by-location.php']],

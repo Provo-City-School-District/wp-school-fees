@@ -59,14 +59,29 @@ if ($parent && preg_match('/^school-fees-(\d{2}-\d{2})$/', $parent->post_name, $
 				$pdf_url   = 'https://globalassets.provo.edu/fee-summary/' . $year_slug . '/fee_summary_' . $location_value . '.pdf';
 				$pdf_label = $location_label . ' Fee Summary';
 			}
-			?>
-			<?php if ($pdf_url) : ?>
-				<ul>
-					<li>
-						<a href="<?php echo esc_url($pdf_url); ?>"><?php echo esc_html($pdf_label); ?></a>
-					</li>
-				</ul>
-			<?php endif; ?>
+
+				$documents = [];
+				if ($pdf_url) {
+					$documents[] = ['label' => $pdf_label, 'url' => $pdf_url];
+				}
+				$additional = get_field('additional_documents');
+				if (is_array($additional)) {
+					foreach ($additional as $doc) {
+						if (!empty($doc['url']) && !empty($doc['label'])) {
+							$documents[] = ['label' => $doc['label'], 'url' => $doc['url']];
+						}
+					}
+				}
+				?>
+				<?php if ($documents) : ?>
+					<ul>
+						<?php foreach ($documents as $doc) : ?>
+							<li>
+								<a href="<?php echo esc_url($doc['url']); ?>"><?php echo esc_html($doc['label']); ?></a>
+							</li>
+						<?php endforeach; ?>
+					</ul>
+				<?php endif; ?>
 
 			<?php
 			if (!$year_slug) {
