@@ -245,7 +245,7 @@ function pcsd_school_fees_register_acf_fields()
 				'type' => 'repeater',
 				'instructions' => 'Extra links to list alongside the fee summary (label + URL). Each row renders as a link below the fee summary PDF.',
 				'layout' => 'table',
-				'button_label' => 'Add Document',
+				'button_label' => 'Add Link',
 				'sub_fields' => [
 					[
 						'key' => 'field_pcsd_additional_document_label',
