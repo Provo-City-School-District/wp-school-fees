@@ -86,7 +86,7 @@ function pcsd_school_fees_help_page()
 	<hr>
 
 	<h2><?php esc_html_e('Uploading a fee summary PDF', 'pcsd-school-fees'); ?></h2>
-	<p><?php esc_html_e('Each school\'s per-year page has a PDF upload field. The PDF appears as a link at the top of that school\'s public fee page.', 'pcsd-school-fees'); ?></p>
+	<p><?php esc_html_e('Each school\'s per-year page has a PDF upload field. The PDF appears as a link at the top of that school\'s public fee page. If no PDF is uploaded, no link appears.', 'pcsd-school-fees'); ?></p>
 	<ol>
 		<li><?php esc_html_e('In the left sidebar, go to Pages and find the year landing page (e.g., "School Fees 26-27").', 'pcsd-school-fees'); ?></li>
 		<li><?php esc_html_e('Expand it to see the per-school child pages. Click the school you want to upload for.', 'pcsd-school-fees'); ?></li>

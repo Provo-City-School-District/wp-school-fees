@@ -55,10 +55,6 @@ if ($parent && preg_match('/^school-fees-(\d{2}-\d{2})$/', $parent->post_name, $
 			$pdf_field = get_field('fee_summary_pdf');
 			$pdf_url   = !empty($pdf_field['url']) ? $pdf_field['url'] : null;
 			$pdf_label = !empty($pdf_field['title']) ? $pdf_field['title'] : $location_label . ' Fee Summary';
-			if (!$pdf_url && $year_slug && in_array($school_level, ['middle', 'high'], true) && $location_value) {
-				$pdf_url   = 'https://globalassets.provo.edu/fee-summary/' . $year_slug . '/fee_summary_' . $location_value . '.pdf';
-				$pdf_label = $location_label . ' Fee Summary';
-			}
 
 				$documents = [];
 				if ($pdf_url) {

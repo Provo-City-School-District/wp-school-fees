@@ -233,7 +233,7 @@ function pcsd_school_fees_register_acf_fields()
 				'label' => 'Fee Summary PDF',
 				'name' => 'fee_summary_pdf',
 				'type' => 'file',
-				'instructions' => 'Upload the fee summary PDF for this school and year. If left blank, the page links to the standard fee summary URL on the district file server.',
+				'instructions' => 'Upload the fee summary PDF for this school and year. If left blank, no fee summary link appears on the public page.',
 				'return_format' => 'array',
 				'library' => 'all',
 				'mime_types' => 'pdf',
